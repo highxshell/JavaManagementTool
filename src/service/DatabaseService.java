@@ -67,6 +67,24 @@ public class DatabaseService {
         return isFound;
     }
 
+    public boolean getEmployeeByName(String name) throws SQLException{
+        boolean isFound = false;
+        try(Connection connection = databaseUtil.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(QueryUtil.selectEmployeeByName(name));
+        ) {
+            while(resultSet.next()) {
+                isFound = true;
+                printEmployee(new Employee(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getDouble("salary")
+                ));
+            }
+        }
+        return isFound;
+    }
+
     public void deleteEmployeeById(int id) throws SQLException{
         try(Connection connection = databaseUtil.getConnection();
             Statement statement = connection.createStatement();){

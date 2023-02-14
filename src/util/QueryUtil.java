@@ -10,6 +10,9 @@ public class QueryUtil {
     public static String selectEmployeeById(int id){
         return "SELECT id,name,address,salary FROM employee_info WHERE id = " + id;
     }
+    public static String selectEmployeeByName(String name){
+        return "SELECT id,name,address,salary FROM employee_info WHERE name LIKE " + "\'" + name + "%\'";
+    }
     public static String deleteEmployeeById(int id){
         return "DELETE FROM employee_info WHERE id = " + id;
     }

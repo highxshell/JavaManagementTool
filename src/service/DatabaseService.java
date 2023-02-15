@@ -40,6 +40,32 @@ public class DatabaseService {
             }
         }
     }
+    public void getAllEmployeesSalarySort() throws SQLException{
+        try (Connection connection = databaseUtil.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(QueryUtil.selectAllEmployeeSortSalaryQuery());){
+            while(resultSet.next()) {
+                printEmployee(new Employee(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getDouble("salary")
+                ));
+            }
+        }
+    }
+    public void getAllEmployeesNameSort() throws SQLException{
+        try (Connection connection = databaseUtil.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(QueryUtil.selectAllEmployeeSortNameQuery());){
+            while(resultSet.next()) {
+                printEmployee(new Employee(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getDouble("salary")
+                ));
+            }
+        }
+    }
     private void printEmployee(Employee employee){
         System.out.println("Employee id: " + employee.getEmployeeID());
         System.out.println("Employee name: " + employee.getEmployeeName());

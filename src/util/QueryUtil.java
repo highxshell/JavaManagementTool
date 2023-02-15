@@ -7,6 +7,12 @@ public class QueryUtil {
     public static String selectAllEmployeeQuery(){
         return "SELECT id,name,address,salary FROM employee_info";
     }
+    public static String selectAllEmployeeSortSalaryQuery(){
+        return "SELECT id,name,address,salary FROM employee_info \n" + "ORDER BY salary DESC";
+    }
+    public static String selectAllEmployeeSortNameQuery(){
+        return "SELECT id,name,address,salary FROM employee_info \n" + "ORDER BY name ASC";
+    }
     public static String selectEmployeeById(int id){
         return "SELECT id,name,address,salary FROM employee_info WHERE id = " + id;
     }

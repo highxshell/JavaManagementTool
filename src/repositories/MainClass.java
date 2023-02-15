@@ -18,8 +18,10 @@ public class MainClass {
                 System.out.println("3. Select employee by an id");
                 System.out.println("4. Delete employee");
                 System.out.println("5. Update employee");
-                System.out.println("6. Select employee by a name");
-                System.out.println("7. Exit ManagementTool");
+                System.out.println("6. Select all employees sorted by salary");
+                System.out.println("7. Select all employees sorted by name");
+                System.out.println("8. Select employee by a name");
+                System.out.println("9. Exit ManagementTool");
 
                 int choiceNum = Integer.parseInt(scanner.nextLine());
 
@@ -53,6 +55,12 @@ public class MainClass {
                         }
                         break;
                     case 6:
+                        databaseService.getAllEmployeesSalarySort();
+                        break;
+                    case 7:
+                        databaseService.getAllEmployeesNameSort();
+                        break;
+                    case 8:
                         System.out.println("Enter name of an employee");
                         String name = scanner.nextLine();
                         boolean isFoundName = databaseService.getEmployeeByName(name);
@@ -60,12 +68,12 @@ public class MainClass {
                             System.out.println("Record not found for name " + name);
                         }
                         break;
-                    case 7:
+                    case 9:
                         System.out.println("Thank you for using our Management Tool!");
                         isRunning = false;
                         break;
                     default:
-                        System.out.println("incorrect");
+                        System.out.println("Please enter a number from list.");
                         break;
 
                 }

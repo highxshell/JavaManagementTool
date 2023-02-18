@@ -3,6 +3,7 @@ package repositories;
 import entities.Employee;
 import service.DatabaseService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainClass {
@@ -75,7 +76,11 @@ public class MainClass {
                         break;
                 }
             }
-        } catch (Exception e){
+
+        }catch (NumberFormatException e) {
+            System.out.println("Input must be integer");
+        }
+        catch (Exception e){
             throw new RuntimeException("Something went wrong." + e);
         }
     }

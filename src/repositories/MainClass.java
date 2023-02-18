@@ -77,7 +77,7 @@ public class MainClass {
                 }
             }
 
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("Input must be integer");
         }
         catch (Exception e){

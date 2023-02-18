@@ -1,14 +1,16 @@
 package service;
 
 import entities.Employee;
+import service.Interfaces.IDBServices;
 import util.DatabaseUtil;
 import util.QueryUtil;
 
 import java.sql.*;
 import java.util.List;
 
-public class DatabaseService {
+public class DatabaseService implements IDBServices {
     DatabaseUtil databaseUtil = new DatabaseUtil();
+    @Override
     public void insertEmployee(Employee employee) throws SQLException {
         try (Connection connection = databaseUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(QueryUtil.insertEmployeeQuery());){
@@ -27,6 +29,7 @@ public class DatabaseService {
 
         }
     }
+    @Override
     public void getAllEmployees() throws SQLException{
         try (Connection connection = databaseUtil.getConnection();
              Statement statement = connection.createStatement();
@@ -40,6 +43,7 @@ public class DatabaseService {
             }
         }
     }
+    @Override
     public void getAllEmployeesSalarySort() throws SQLException{
         try (Connection connection = databaseUtil.getConnection();
              Statement statement = connection.createStatement();
@@ -53,6 +57,7 @@ public class DatabaseService {
             }
         }
     }
+    @Override
     public void getAllEmployeesNameSort() throws SQLException{
         try (Connection connection = databaseUtil.getConnection();
              Statement statement = connection.createStatement();
@@ -73,6 +78,7 @@ public class DatabaseService {
         System.out.println("Employee salary: " + employee.getEmployeeSalary());
         System.out.println("--------------------------");
     }
+    @Override
     public boolean getEmployeeById(int id) throws SQLException{
         boolean isFound = false;
         try(Connection connection = databaseUtil.getConnection();
@@ -92,7 +98,7 @@ public class DatabaseService {
         }
         return isFound;
     }
-
+    @Override
     public boolean getEmployeeByName(String name) throws SQLException{
         boolean isFound = false;
         try(Connection connection = databaseUtil.getConnection();
@@ -110,7 +116,7 @@ public class DatabaseService {
         }
         return isFound;
     }
-
+    @Override
     public void deleteEmployeeById(int id) throws SQLException{
         try(Connection connection = databaseUtil.getConnection();
             Statement statement = connection.createStatement();){
@@ -122,6 +128,7 @@ public class DatabaseService {
             }
         }
     }
+    @Override
     public void updateEmployee(Employee employee) throws SQLException{
         try(Connection connection = databaseUtil.getConnection();
             PreparedStatement preparedStatement = connection

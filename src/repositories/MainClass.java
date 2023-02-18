@@ -9,7 +9,6 @@ public class MainClass {
     public static void main(String[] args){
         DatabaseService databaseService = new DatabaseService();
         try(Scanner scanner = new Scanner(System.in);) {
-
             boolean isRunning = true;
             while (isRunning) {
                 System.out.println("Enter your choice");
@@ -24,7 +23,6 @@ public class MainClass {
                 System.out.println("9. Exit ManagementTool");
 
                 int choiceNum = Integer.parseInt(scanner.nextLine());
-
 
                 switch (choiceNum) {
                     case 1:
@@ -75,12 +73,10 @@ public class MainClass {
                     default:
                         System.out.println("Please enter a number from list.");
                         break;
-
                 }
             }
         } catch (Exception e){
             throw new RuntimeException("Something went wrong." + e);
         }
-
     }
 }

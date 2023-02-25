@@ -7,7 +7,6 @@ public class Employee {
     private double employeeSalary;
 
     public Employee(String employeeName, String employeeAddress, double employeeSalary) {
-        super();
         this.employeeName = employeeName;
         this.employeeAddress = employeeAddress;
         this.employeeSalary = employeeSalary;
